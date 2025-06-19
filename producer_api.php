@@ -8,7 +8,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('max_execution_time', 0); // Prevent timeout for long data
 
-// Kafka configuration
 $conf = new Conf();
 $conf->set('metadata.broker.list', 'localhost:9092');
 // Optional: enable compression for performance
@@ -17,8 +16,8 @@ $conf->set('compression.codec', 'snappy');
 $producer = new Producer($conf);
 $topic = $producer->newTopic("kafka_main");
 
-// Fetch API data
-$apiUrl = "http://localhost/api_10000_users.php";
+
+$apiUrl = "https://jsonplaceholder.typicode.com/users";
 $response = file_get_contents($apiUrl);
 
 if ($response === false) {

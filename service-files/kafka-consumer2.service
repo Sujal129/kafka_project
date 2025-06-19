@@ -1,0 +1,13 @@
+[Unit]
+Description=Kafka Consumer 2 Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/php /home/sujal/kafka-php-demo/consumer2.php
+WorkingDirectory=/home/sujal/kafka-php-demo
+Restart=always
+StandardOutput=append:/home/sujal/kafka-php-demo/consumer2.log
+StandardError=append:/home/sujal/kafka-php-demo/consumer2-error.log
+
+[Install]
+WantedBy=multi-user.target
